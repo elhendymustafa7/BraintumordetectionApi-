@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    <title>Brain Tumor Detection</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="bbrain.ico" type="image/x-icon" />
+</head>
+<body>
+    <div id="scan-div">
+            
+        <h1>Brain Tumor Detection</h1>
+        <span>
+         <label for="fileInput">
+            Upload<br>Photos
+        </label>
+        <input type="file" id="fileInput" multiple><br>
+        <input type="submit" value="Submit" onclick="uploadFile()">
+            
+        </span>
+       
+    </div>
+    <div id="resultField">
+        <div id="inform-div">
+            <span>
+                <p>Tumor Type : </p>
+                <p id="type"></p>
+            </span>
+            <span>
+                <p>Mass Lesion Founded : </p>
+                <p id="mass"></p>
+            </span>
+        </div>
+        
+        <div id="container">
+        <div id="img-view">    
+        </div>
+        <input type="submit" value="Return"  id="return" onClick="window.location.reload();">
+        </div>
+        
+    </div>
+
+    <script type="text/javascript">function uploadFile() {
+    var fileInput = document.querySelector('#fileInput'); 
+
+    if (fileInput.files[0]) {
+       var formData = new FormData();
+       for (const file of fileInput.files)
+           formData.append('files', file);
+
+        axios({
+                method: 'post',
+                url: 'http://127.0.0.1:8000/Scan/',
+                data: formData,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'multipart/form-data'
+                }
+
+            })
+            .then(function(response) {
+            const add=document.getElementById('scan-div');
+                const preview=document.getElementById('resultField');
+                add.style.display='none';
+                preview.style.display='flex';
+                console.log(response.data.ListOfUrl);
+
+                
+                console.log(response.data.Type);
+                
+                document.getElementById('type').innerHTML =response.data.Type;
+                document.getElementById('mass').innerHTML=response.data.mass;
+                console.log(response.data.ListOfUrl.length);
+                if (response.data.ListOfUrl.length >2)
+                {
+                    for (let i =0 ; i< response.data.ListOfUrl.length ; i++)
+                    {
+                      displayCards(response.data.ListOfUrl[i]);
+                      console.log(response.data.ListOfUrl[i]);
+                    }
+                }
+                else
+                {
+                    for (let i =0 ; i< response.data.ListOfUrl.length ; i++)
+                    {
+                      displayCards(response.data.ListOfUrl[i]);
+                      console.log(response.data.ListOfUrl[i]);
+
+                    }
+                    document.getElementById('img-view').style.display="flex";
+                }
+              
+            })
+            .catch(function(response) {
+                console.log(response);
+            });
+    }
+    function displayCards(scr){
+        const  imgview =document.getElementById('img-view');
+        const img=`<img src="${scr}" class="photos">`
+        imgview.innerHTML += img;
+    }
+   //// document.getElementById('return').onclick = function (){
+        //const add=document.getElementById('scan-div');
+        //const preview=document.getElementById('resultField');
+       // add.style.display='flex';
+       // preview.style.display='none';
+       // const  imgview =document.getElementById('img-view');
+        //imgview.innerHTML = '';
+       // console.clear()
+    //}
+    const reloadtButton = document.querySelector("#reload");
+    // Reload everything:
+    function reload() {
+        reload = location.reload();
+    }
+    // Event listeners for reload
+    reloadButton.addEventListener("click", reload, false);
+}
+
+</script>
+</body>
+</html>

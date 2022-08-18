@@ -1,0 +1,169 @@
+
+    *{
+        border: none;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+    body{
+        background-image: url('Galactic Brain B&W [2560x1440].jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    #scan-div{
+        width: 400px;
+            height: 400px;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column; 
+            background: rgba(248, 248, 249, .5);
+            box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+    }
+    #scan-div h1{
+        color: white;
+            margin: 1rem;
+            position: relative;
+            top: -140px;
+            font-weight: 900;
+            font-size: 40px;
+    }
+    #scan-div span{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 300px;
+        position: relative;
+        top: -70px;
+    }
+    [type='file']{
+        display: none;
+    }
+    [type='submit']{
+        width: 40%;
+        height: 40px;
+        border-radius: 5px;
+        color: snow;
+        /*background: var(--text-blueGray);*/
+        background: black;
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin: .5rem;
+        box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.24);
+    }
+    [type='submit']:hover{
+        background: white;
+        border-top: 3px solid black;
+        border-bottom: 3px solid black;
+        border-right: none;
+        border-left: none;
+        /*color:var(--text-blueGray);;*/
+        color: black;
+    }
+    label{
+        border: 3px solid white;
+            border-radius: 50%;
+            padding: 1.6rem;
+            font-size: 26px;
+            font-weight: 900;
+            color: white;
+            /*background: var(--text-blueGray);*/
+            background: black;
+            margin: 1rem;
+            box-shadow: 0 0 10px 10px rgb(255 79 66 / 24%);
+            animation-name: button;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            cursor: pointer;
+    }
+    label:hover{
+        background: white;
+        color: black;
+        border: 3px solid black;
+    }
+    .photos{
+        width: 150px;
+        height: 150px;
+        padding: 1rem;
+    }
+    #type{
+        
+        padding-left: 0.5rem;
+        color:black;
+
+    }
+    #mass{
+        padding-left: 0.5rem;
+        color:black;
+    }
+    #resultField span {
+        display: flex;
+    }
+    #img-view{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 1rem;
+
+        padding: 1rem 0;
+    }
+    #resultField{
+        display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 600px;
+    height: auto;
+    padding: 1rem;
+    margin: auto;
+    font-weight: 800;
+    color: black;
+    /* background: rgba(248, 248, 249, .5); */
+    margin-top: 2rem;
+    color: white;
+    font-size: 24px;
+    border-radius: 10px;
+    }
+    #inform-div{
+        display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(248, 248, 249, .5);
+    border-radius: 10px;
+    padding: 1rem 0;
+    color: black;
+    }
+    #container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(248, 248, 249, .5);
+        margin: 1rem;
+        border-radius: 10px;
+        padding: 1rem 0;
+    }
+    @keyframes button{
+        0%{
+            box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.24);
+        }
+        50%{
+
+            box-shadow: 0 0 10px 17px rgba(0, 0, 0, 0.6);
+
+        }
+        100%{
+            box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.24);;
+        }
+    }
